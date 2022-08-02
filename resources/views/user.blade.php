@@ -16,10 +16,10 @@ aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 <ul class="navbar-nav">
 @guest
 <li class="nav-item">
-<a class="nav-link" href="{{ url('login') }}">Login</a>
+<a class="nav-link" href="{{ url('/register') }}">Login</a>
 </li>
 <li class="nav-item">
-<a class="nav-link" href="{{ url('register') }}">Register</a>
+<a class="nav-link" href="{{ url('/api/user/create') }}">Register</a>
 </li>
 @endguest
 </ul>
@@ -27,6 +27,41 @@ aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 </div>
 </nav>
 @yield('content')
-<p> Okama </p>
+<!-- <p> Okama </p> -->
+<form method="POST" id="validateajax" action="/api/user/create" name="registerform">
+              <div class="form-group">
+              <label>Name</label>
+                <input type="text"id = "name" name="name" value="{{ old('name') }}" class="@error('name') is-invalid @enderror form-control" />
+                @error('name')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+              </div>
+                <label>Email</label>
+                <input type="text" id= "email" name="email" value="{{ old('email') }}" class="@error('email') is-invalid @enderror form-control" />
+
+                @error('email')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+                @csrf
+              </div>
+               <div class="form-group">
+                <label>Password</label>
+                <input type="password" id="password" name="password"  class="@error('password') is-invalid @enderror form-control" />
+                @error('password')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+              </div>
+               <div class="form-group">
+                <label>Confirm Password</label>
+                <input type="password" name="password-repeat"  class="@error('password-repeat') is-invalid @enderror form-control" />
+                @error('password-repeat')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+              </div>
+
+              <div class="form-group">
+                <button class="btn btn-primary">Register</button>
+              </div>
+            </form>
 </body>
 </html>

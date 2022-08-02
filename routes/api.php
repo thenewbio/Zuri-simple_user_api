@@ -18,13 +18,12 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-Route::get('/user/create', [UserController::class, "index"]);
-// Route::post('/user/create', 'UserController@register');
-// Route::post('/user/login', 'UserController@login');
-// Route::get(' /user/update/{id}', 'UserController@updateUser');
-// Route::get(' /user/delete/{id}', 'UserController@deleteUser');
-// Route::get('/user', 'UserController@getUser');
-// Route::get('/users', 'UserController@getAllUsers');
-// Route::get('/logout/{id}', 'UserController@logout');
+Route::get('/hello', [UserController::class, "index"]);
+Route::post('/user/create', [UserController::class, "register"]);
+Route::put(' /user/update/{id}', [UserController::class, 'updateUser']);
+Route::get(' /user/delete/{id}', [UserController::class, 'deleteUser']);
+Route::get('/user', [UserController::class, 'getUser']);
+Route::get('/users', [UserController::class, 'getUsers']);
+Route::get('/logout/{id}', [UserController::class, 'logout']);
+Route::post('/', [UserController::class, 'store']);
 

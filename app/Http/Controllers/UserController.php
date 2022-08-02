@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\Validator;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -17,9 +16,49 @@ class UserController extends Controller
     }  
        
  
-    public function register(Request $request)
+    public function register()
     {
-       
+        // dd($request ->all());
+
+       $users = User::create([
+            'Name' => request('name'),
+            'Email' => request('email'),
+            'Password' => request('password'),
+        ]);
+
+        return response()->json(['user' => $users]);
+        // $validator = Validator::make($request, [
+        //     'name' => 'required|min:3|max:50', 
+        //     'password' => 'required|min:6', 
+        //     'password_confirmation' => 'required|same:password|min:6', // this will check password                           
+        // ]);
+        // if ($validator->fails())   //check all validations are fine, if not then redirect and show error messages
+        // {
+            
+        //     return back()->withInput()->withErrors($validator);
+            
+        // }
+        // else
+        // {
+        //     dd($request ->all());
+        // }  
+      
+        // return response()->json(['message' => "You have successfully registered"]);
+        // $validator = Validator::make($request, [
+        //     'name' => 'required|min:3|max:50', 
+        //     'password' => 'required|min:6', 
+        //     'password_confirmation' => 'required|same:password|min:6', // this will check password                           
+        // ]);
+        // if ($validator->fails())   //check all validations are fine, if not then redirect and show error messages
+        // {
+            
+        //     return back()->withInput()->withErrors($validator);
+            
+        // }
+        // else
+        // {
+        //     return response()->json(["status"=>true,"message"=>"Form submitted successfully"]);
+        // }  
     }
    public function login(){
 
@@ -34,7 +73,7 @@ class UserController extends Controller
    }
 
    public function getUsers(){
-    
+
    }
     
 }
