@@ -1,17 +1,4 @@
-
-
-
-
-<html lang="en">
-    
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple-User Api login</title>
-    <!-- <link rel="stylesheet" href="/resources/css/login.css"> -->
-    <style>
-        * {
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -192,23 +179,3 @@ footer ol li a:hover {
 footer small {
     font-size: 11px;
 }
-    </style>
-</head>
-<body>
-<form method="GET" id="validateajax" action="/api/user/login" name="registerform">
-    <main>
-        <div class="row">
-            <div class="colm-form">
-                <div class="form-container">
-                    <input type="text" placeholder="Email address" id="email" name="email">
-                    <input type="password" placeholder="Password" id="password" name="password">
-                    <button  id="login" name="login" class="btn-login">Login</button>
-                    <!-- <a href="#">Forgotten password?</a> -->
-                    <!-- <button id="" class="btn-new">Create new Account</button> -->
-                </div>
-            </div>
-        </div>
-    </main>
-</form>
-</body>
-</html>

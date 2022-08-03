@@ -5,64 +5,63 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
 
     //
-    public function index()
+    public function login(Request $request)
     {
-        return response()->json(['message' => "Welcome to API test"]);
+        $email =$request->input('email');
+        $password = $request->input('password');
+        $user = User::where('email',$email && 'password', $password)->first();
+    
+        if($user){
+          return;
+        }
+        else {
+            return view('/login');
+        }
+  
+     
     }  
        
  
-    public function register()
+    public function register(Request $request)
     {
         // dd($request ->all());
+        $email =$request->input('email');
+        $name = $request->input('name');
+        $userEmail = User::where('email',$email)->first();
+        $userName = User::where('name',$name)->first();
 
-       $users = User::create([
+       $password = $request->input('password');
+       $passwordRepeat = $request->input('password-repeat');
+
+     if ($userEmail){
+        echo " <script>alert('Email Chosen. please choose another email ');
+        window.location='/';
+    </script>";
+     } else if($userName) {
+        echo " <script>alert('Name already exist ');
+        window.location='/';
+    </script>";
+     }
+  else if($password == $passwordRepeat) {
+        $users = User::create([
             'Name' => request('name'),
             'Email' => request('email'),
             'Password' => request('password'),
         ]);
-
-        return response()->json(['user' => $users]);
-        // $validator = Validator::make($request, [
-        //     'name' => 'required|min:3|max:50', 
-        //     'password' => 'required|min:6', 
-        //     'password_confirmation' => 'required|same:password|min:6', // this will check password                           
-        // ]);
-        // if ($validator->fails())   //check all validations are fine, if not then redirect and show error messages
-        // {
-            
-        //     return back()->withInput()->withErrors($validator);
-            
-        // }
-        // else
-        // {
-        //     dd($request ->all());
-        // }  
-      
-        // return response()->json(['message' => "You have successfully registered"]);
-        // $validator = Validator::make($request, [
-        //     'name' => 'required|min:3|max:50', 
-        //     'password' => 'required|min:6', 
-        //     'password_confirmation' => 'required|same:password|min:6', // this will check password                           
-        // ]);
-        // if ($validator->fails())   //check all validations are fine, if not then redirect and show error messages
-        // {
-            
-        //     return back()->withInput()->withErrors($validator);
-            
-        // }
-        // else
-        // {
-        //     return response()->json(["status"=>true,"message"=>"Form submitted successfully"]);
-        // }  
-    }
-   public function login(){
-
-   }
+        return response()->json(["ID" => $users->id, "NAME" => $users->Name, "EMAIL" => $users->Email]);
+       }
+       else {
+        echo " <script>alert('Password does not match');
+        window.location='/';
+    </script>";
+       }
+}
 
    public function update(){
 
@@ -73,7 +72,10 @@ class UserController extends Controller
    }
 
    public function getUsers(){
+   
+    $users = User::all();
 
-   }
+    return view('/users', ['users' => $users]);
+}
     
 }
