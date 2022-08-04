@@ -4,30 +4,34 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
 
     //
-    public function login(Request $request)
+    public function loginstatus()
     {
-        $email =$request->input('email');
+        return view('/login');
+     
+    } 
+    public function login(Request $request) {
+        $data =$request->input();
         $password = $request->input('password');
-        $user = User::where('email',$email && 'password', $password)->first();
+        $user = User::where('email', $data['email'])->first();
+        $userPass = User::where('password',$password)->first();
     
-        if($user){
-          return;
+        if($user && $userPass){
+        $request->session()-> put('users', $data['email'],);
+        return response()->json([ session('users') => "Successfully login"]);
+        
         }
         else {
-            return view('/login');
+            echo " <script>alert('Password or Email do not match any user');
+        window.location='/api/';
+    </script>";
         }
-  
-     
-    }  
+    }
        
- 
     public function register(Request $request)
     {
         // dd($request ->all());
@@ -63,12 +67,34 @@ class UserController extends Controller
        }
 }
 
-   public function update(){
+   public function update(User $user){
+    return view('update', ['user'=> $user]);
+   }
+  public function updateUser(User $request, $id){
+        //    dd(request()->all());
+    $request->replicate([
+        'Name' => 'required',
+        'Email' => 'required',
+    ]);
+    $user = User::find($id);
+    $user->update([
+        'Name' => request('name'),
+        'Email' => request('email'),
+    ]);
+
+    return response()->json(['Success' => $user]);
+  }
+
+   public function getUser($id){
+   $user = User::find($id);
+   return view('/index', ['users' => $user]);
 
    }
 
-   public function getUser(){
-
+   public function delete($id){
+    $user = User::find($id);    
+    $user->delete();
+    return response()->json(['Successfully deleted' => $user]);
    }
 
    public function getUsers(){

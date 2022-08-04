@@ -199,10 +199,10 @@ aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 <ul class="navbar-nav">
 @guest
 <li class="nav-item">
-<a class="nav-link" href="{{ url('/api/user/login') }}">Login</a>
+<a class="nav-link" href="{{ url('/api/log') }}">Login</a>
 </li>
 <li class="nav-item">
-<a class="nav-link" href="{{ url('/api/users') }}">GET ALL USERS</a>
+<a class="nav-link" href="{{ url('api/user')}}">GET ALL USERS</a>
 </li>
 @endguest
 </ul>
@@ -223,7 +223,7 @@ aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <input type="text" id= "email" name="email" value="{{ old('email') }}" class="@error('email') is-invalid @enderror form-control" />
 
                 @error('email')
-                <div class="alert alert-danger">{{ $message }}</div>
+                <div class="alert alert-danger">{{$message}}</div>
                 @enderror
                 @csrf
               </div>
