@@ -23,7 +23,7 @@ Route::post('/user/create', [UserController::class, "register"]);
 Route::middleware('api-session')->get('/user/login', [UserController::class, 'login']);
 Route::put('/user/update/{id}', [UserController::class, 'updateUser']);
 Route::get('/user/delete/{id}', [UserController::class, 'delete']);
-Route::get('/user', [UserController::class, 'getUser']);
+Route::get('/user/{id}', [UserController::class, 'getUser']);
 
 
 

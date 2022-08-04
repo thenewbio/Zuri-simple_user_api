@@ -15,20 +15,17 @@
                        <center> <h2 class="text-4xl font-bold mb-4"> You are Welcome</h2>
                     </div>
                     <div class="card-body">
-                   <!-- <center> <a href="{{ url('api/users')}}" class="bg-blue-500 tracking-wide text-white px-6 py-2 inline-block mb-6 shadow-lg rounded hover:shadow my-4">GetUsers</a></center> -->
-
-                    <br/>
                         <br/>
                         </center>   
                         <div class="table-responsive">
-                            <table class="table" style="width:100%">
+                            <table class="table table-bordered" style="width:100%">
                                 <thead>
                                     <tr>
                                    
                                         <th>ID</th>
-                                        <th>NAME</th>
-                                        <th>EMAIL</th>
-                                        <th>ACTIONS</th>
+                                        <th width="500px">NAME</th>
+                                        <th width="400px">EMAIL</th>
+                                        <th width="350px">ACTIONS</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -36,11 +33,11 @@
                                     <tr>
 
                                         <td>{{ $user->id }}</td>
-                                        <td>{{ $user->Name }}</td>
-                                        <td>{{ $user->Email }}</td>
+                                        <td width="500px">{{ $user->Name }}</td>
+                                        <td width="400px">{{ $user->Email }}</td>
 
                                         <td>
-                                        
+                                        <a href="{{ url('api/user/'. $user->id)}}" title="Get User"><button class="ml-4 bg-blue-500 tracking-wide text-white px-6 py-2 inline-block mb-6 shadow-lg rounded hover:shadow"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Get User</button></a>
                                             <a href="{{ url('api/user/update/'. $user->id) }}" title="Edit Student"><button class="ml-4 bg-blue-500 tracking-wide text-white px-6 py-2 inline-block mb-6 shadow-lg rounded hover:shadow"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
                                             <a href="{{ url('api/user/delete/'. $user->id) }}" title="Delete Student"><button class="ml-4 bg-red-500 tracking-wide text-white px-6 py-2 inline-block mb-6 shadow-lg rounded hover:shadow"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Delete</button></a>
                                             

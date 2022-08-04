@@ -85,11 +85,10 @@ class UserController extends Controller
     return response()->json(['Success' => $user]);
   }
 
-   public function getUser(){
-    return $this->hasid(User::class);
-     
-    // User::find($id);
-    // dd(request()->all());
+   public function getUser($id){
+    $user = User::where('id',$id)->first();
+    if (!$user) return response()->json('Not found', 404);
+        return $user;
    }
 
    public function delete($id){
