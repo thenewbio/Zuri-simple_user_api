@@ -7,7 +7,6 @@
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body>
-@foreach($users as $user)
 <div class="container">
         <div class="row">
             <div class="col-md-9">
@@ -25,7 +24,7 @@
                             <table class="table" style="width:100%">
                                 <thead>
                                     <tr>
-
+                                    @foreach($users as $user)
                                         <th>ID</th>
                                         <th>NAME</th>
                                         <th>EMAIL</th>
