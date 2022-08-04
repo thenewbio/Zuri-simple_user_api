@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>UsersPage</title>
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body>
@@ -13,10 +13,10 @@
             <div class="col-md-9">
                 <div class="card">
                     <div class="card-header">
-                       <center> <h2 class="text-4xl font-bold mb-4">Welcome {{$user->Name }}</h2>
+                       <center> <h2 class="text-4xl font-bold mb-4"> You are Welcome</h2>
                     </div>
                     <div class="card-body">
-                   <center> <a href="{{ url('api/users')}}" class="bg-blue-500 tracking-wide text-white px-6 py-2 inline-block mb-6 shadow-lg rounded hover:shadow my-4">GetUsers</a></center>
+                   <!-- <center> <a href="{{ url('api/users')}}" class="bg-blue-500 tracking-wide text-white px-6 py-2 inline-block mb-6 shadow-lg rounded hover:shadow my-4">GetUsers</a></center> -->
 
                     <br/>
                         <br/>

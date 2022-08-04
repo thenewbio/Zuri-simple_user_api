@@ -202,8 +202,12 @@ aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 <a class="nav-link" href="{{ url('/api/log') }}">Login</a>
 </li>
 <li class="nav-item">
-<a class="nav-link" href="{{ url('api/users')}}">GET ALL USERS</a>
+<a class="nav-link" href="{{ url('api/user')}}">GET User</a>
 </li>
+<li class="nav-item">
+<a class="nav-link" href="{{ url('api/users')}}">Get all Users</a>
+</li>
+
 @endguest
 </ul>
 </div>

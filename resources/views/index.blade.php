@@ -35,7 +35,7 @@
                               
                                     <tr>
 
-                                        <td>{{ $user->id }}</td>
+                                        <td>resonse()->json('ID' => {{ $user->id }})</td>
                                         <td>{{ $user->Name }}</td>
                                         <td>{{ $user->Email }}</td>
 

@@ -85,13 +85,15 @@ class UserController extends Controller
     return response()->json(['Success' => $user]);
   }
 
-   public function getUser($id){
-   $user = User::find($id);
-   return view('/index', ['users' => $user]);
-
+   public function getUser(){
+    return $this->hasid(User::class);
+     
+    // User::find($id);
+    // dd(request()->all());
    }
 
    public function delete($id){
+   
     $user = User::find($id);    
     $user->delete();
     return response()->json(['Successfully deleted' => $user]);
