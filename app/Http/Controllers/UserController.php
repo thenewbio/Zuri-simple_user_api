@@ -37,8 +37,8 @@ class UserController extends Controller
         // dd($request ->all());
         $email =$request->input('email');
         $name = $request->input('name');
-        $userEmail = User::where('email',$email)->first();
-        $userName = User::where('name',$name)->first();
+        $userEmail = User::where('Email',$email)->first();
+        $userName = User::where('Name',$name)->first();
 
        $password = $request->input('password');
        $passwordRepeat = $request->input('password-repeat');
