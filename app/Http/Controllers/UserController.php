@@ -27,7 +27,7 @@ class UserController extends Controller
         }
         else {
             echo " <script>alert('Password or Email do not match any user');
-        window.location='/api/';
+        window.location='/api/log';
     </script>";
         }
     }
