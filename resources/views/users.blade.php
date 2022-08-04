@@ -24,7 +24,7 @@
                             <table class="table" style="width:100%">
                                 <thead>
                                     <tr>
-                                    @foreach($users as $user)
+                                   
                                         <th>ID</th>
                                         <th>NAME</th>
                                         <th>EMAIL</th>
@@ -32,7 +32,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                              
+                                @foreach($users as $user)
                                     <tr>
 
                                         <td>{{ $user->id }}</td>
