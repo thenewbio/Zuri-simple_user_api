@@ -40,12 +40,12 @@
                                         <td>{{ $user->Name }}</td>
                                         <td>{{ $user->Email }}</td>
 
-                                        <!-- <td>
+                                        <td>
                                         
                                             <a href="{{ url('api/user/update/'. $user->id) }}" title="Edit Student"><button class="ml-4 bg-blue-500 tracking-wide text-white px-6 py-2 inline-block mb-6 shadow-lg rounded hover:shadow"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
                                             <a href="{{ url('api/user/delete/'. $user->id) }}" title="Delete Student"><button class="ml-4 bg-red-500 tracking-wide text-white px-6 py-2 inline-block mb-6 shadow-lg rounded hover:shadow"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Delete</button></a>
                                             
-                                        </td> -->
+                                        </td>
                                     </tr>
                                 @endforeach
                                 </tbody>
